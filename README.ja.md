@@ -113,6 +113,8 @@ Claude Desktop のメニューバーから:
 
 Illustrator が複数インストールされている場合、会話で使用するバージョンを指定できます。「Illustrator 2024 を使って」と伝えるだけで、`set_illustrator_version` ツールが対象バージョンを切り替えます。
 
+
+**対応バージョン:** Illustrator 2024（v28）以降で検証しています。Illustrator 2020〜2023（v24〜v27）も動作する見込みですが（本サーバーが使用する ExtendScript API はすべて v24 の時点で存在します）、**検証はしていません**。そのため、これらのバージョンで実行するとツールが警告を返します。2020（v24）より古いバージョンは動作対象外です。未検証バージョンで問題が起きた場合は [Issue](https://github.com/ie3jp/illustrator-mcp-server/issues) でご報告ください。
 > [!NOTE]
 > すでに Illustrator が起動している場合は、バージョン設定に関わらず起動中のインスタンスに接続します。バージョン指定は、Illustrator が未起動の場合に起動するバージョンを決定するためのものです。
 
@@ -160,7 +162,7 @@ Claude:  → get_document_info → resize_for_variation
 | | 本プロジェクト | Adobe 公式 MCP（Beta） |
 |---|---|---|
 | 入手方法 | npm（`npx illustrator-mcp-server`）または `.mcpb` のワンクリックインストール | Illustrator Beta に内蔵 — アプリの設定画面から認証キーと URL を取得し `mcp-remote` で接続 |
-| 対応バージョン | 安定版 Illustrator CC 2024+（macOS / Windows） | Illustrator Beta 30.4+ のみ |
+| 対応バージョン | Illustrator 2024+ 検証済み / 2020+ 未検証（macOS / Windows） | Illustrator Beta 30.4+ のみ |
 | ツール数 | 67 | 約 40 |
 | 既存ドキュメントの分析・一括処理 | ✅ 構造 / カラー / フォント分析、一括リカラー、バリエーション生成・データセット、全アートボード一括書き出し（`artboard:all`）、フォント / リンク切れチェック | ✅ 主要フォーカス |
 | オブジェクトのゼロからの作成 | ✅ フルセット — ドキュメント、図形、パス、テキストフレーム、パス上文字、グラデーション | ❌ 新規オブジェクト・テキストフレーム・ドキュメントの作成は不可 \* |

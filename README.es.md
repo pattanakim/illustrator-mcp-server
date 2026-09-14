@@ -115,6 +115,8 @@ Desde la barra de menú de Claude Desktop:
 
 Si tienes varias versiones de Illustrator instaladas, puedes indicarle a Claude cuál utilizar durante la conversación. Basta con decir algo como "Usa Illustrator 2024" y la herramienta `set_illustrator_version` apuntará a esa versión.
 
+
+**Versiones compatibles:** Illustrator 2024 (v28) y posteriores están verificadas. Se espera que Illustrator 2020–2023 (v24–v27) funcionen —todas las API de ExtendScript que usa este servidor existen desde la v24—, pero **no están verificadas**, por lo que las herramientas devuelven una advertencia al ejecutarse en ellas. Las versiones anteriores a 2020 (v24) no son compatibles. Si algo falla en una versión no verificada, [abre un issue](https://github.com/ie3jp/illustrator-mcp-server/issues).
 > [!NOTE]
 > Si Illustrator ya está en ejecución, el servidor se conecta a la instancia activa sin importar la configuración de versión. La versión solo se usa para iniciar la versión correcta cuando Illustrator aún no está abierto.
 
@@ -161,7 +163,7 @@ Claude:  → get_document_info → resize_for_variation
 | | Este proyecto | MCP oficial de Adobe (beta) |
 |---|---|---|
 | Instalación | npm (`npx illustrator-mcp-server`) o instalación en un clic con `.mcpb` | Integrado en Illustrator Beta — obtén una clave de autenticación + URL en los ajustes de la app y conéctate vía `mcp-remote` |
-| Versiones compatibles | Illustrator CC 2024+ estable (macOS / Windows) | Solo Illustrator Beta 30.4+ |
+| Versiones compatibles | Illustrator 2024+ verificado / 2020+ sin verificar (macOS / Windows) | Solo Illustrator Beta 30.4+ |
 | Número de herramientas | 67 | ~40 |
 | Análisis y procesamiento por lotes de documentos existentes | ✅ Análisis de estructura / color / fuentes, recoloreado masivo, variaciones y conjuntos de datos, exportación por lotes de mesas de trabajo (`artboard:all`), preflight de fuentes y enlaces rotos | ✅ Su enfoque principal |
 | Creación de objetos desde cero | ✅ Conjunto completo — documentos, formas, trazados, marcos de texto, texto en trazado, degradados | ❌ Sin nuevos objetos, marcos de texto ni documentos \* |

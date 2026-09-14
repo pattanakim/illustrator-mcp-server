@@ -34,7 +34,7 @@ if (preflight) {
       if (mode === BlendModes.EXCLUSION) return "exclusion";
       if (mode === BlendModes.HUE) return "hue";
       if (mode === BlendModes.SATURATIONBLEND) return "saturationBlend";
-      if (mode === BlendModes.COLOR) return "colorBlend";
+      if (mode === BlendModes.COLORBLEND) return "colorBlend";
       if (mode === BlendModes.LUMINOSITY) return "luminosity";
       return "unknown";
     }

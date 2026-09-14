@@ -115,6 +115,8 @@ Claude Desktop 메뉴 바에서:
 
 여러 버전의 Illustrator가 설치되어 있는 경우, 대화 중에 어떤 버전을 사용할지 Claude에게 알려줄 수 있습니다. "Illustrator 2024를 사용해" 같은 식으로 말하면 `set_illustrator_version` 도구가 해당 버전을 대상으로 합니다.
 
+
+**지원 버전:** Illustrator 2024(v28) 이상에서 검증했습니다. Illustrator 2020~2023(v24~v27)도 동작할 것으로 예상됩니다 — 이 서버가 사용하는 모든 ExtendScript API는 v24 시점에 이미 존재합니다 — 하지만 **검증되지 않았으므로** 해당 버전에서 실행하면 도구가 경고를 반환합니다. 2020(v24)보다 오래된 버전은 지원하지 않습니다. 검증되지 않은 버전에서 문제가 발생하면 [이슈](https://github.com/ie3jp/illustrator-mcp-server/issues)로 알려주세요.
 > [!NOTE]
 > Illustrator가 이미 실행 중인 경우, 버전 설정과 관계없이 서버는 실행 중인 인스턴스에 연결됩니다. 이 버전 설정은 Illustrator가 아직 실행되지 않은 상태에서 올바른 버전을 실행하기 위해서만 사용됩니다.
 
@@ -161,7 +163,7 @@ Claude:  → get_document_info → resize_for_variation
 | | 본 프로젝트 | Adobe 공식 MCP (Beta) |
 |---|---|---|
 | 설치 방법 | npm(`npx illustrator-mcp-server`) 또는 `.mcpb` 원클릭 설치 | Illustrator Beta 내장 — 앱 설정에서 인증 키와 URL을 받아 `mcp-remote`로 연결 |
-| 지원 버전 | 안정판 Illustrator CC 2024+ (macOS / Windows) | Illustrator Beta 30.4+ 한정 |
+| 지원 버전 | Illustrator 2024+ 검증됨 / 2020+ 미검증 (macOS / Windows) | Illustrator Beta 30.4+ 한정 |
 | 도구 수 | 67 | 약 40 |
 | 기존 문서 분석・일괄 처리 | ✅ 구조 / 컬러 / 폰트 분석, 일괄 리컬러, 바리에이션 생성・데이터셋, 전체 아트보드 일괄 내보내기(`artboard:all`), 폰트 / 링크 누락 프리플라이트 | ✅ 주요 포커스 |
 | 제로부터 오브젝트 생성 | ✅ 풀셋 — 문서, 도형, 패스, 텍스트 프레임, 패스 문자, 그라디언트 | ❌ 새 오브젝트・텍스트 프레임・문서 생성 불가 \* |

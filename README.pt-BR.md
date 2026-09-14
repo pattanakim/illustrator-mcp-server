@@ -115,6 +115,8 @@ Na barra de menu do Claude Desktop:
 
 Se você tem várias versões do Illustrator instaladas, pode dizer ao Claude qual versão usar durante a conversa. Basta dizer algo como "Use o Illustrator 2024" e a ferramenta `set_illustrator_version` direcionará para essa versão.
 
+
+**Versões suportadas:** Illustrator 2024 (v28) e posteriores são verificadas. Espera-se que o Illustrator 2020–2023 (v24–v27) funcione — todas as APIs do ExtendScript que este servidor usa existem desde a v24 —, mas elas **não são verificadas**, então as ferramentas retornam um aviso ao rodar nelas. Versões anteriores a 2020 (v24) não são suportadas. Se algo quebrar em uma versão não verificada, [abra uma issue](https://github.com/ie3jp/illustrator-mcp-server/issues).
 > [!NOTE]
 > Se o Illustrator já estiver em execução, o servidor se conecta à instância em execução independentemente da configuração de versão. A versão só é usada para iniciar a versão correta quando o Illustrator ainda não está em execução.
 
@@ -161,7 +163,7 @@ Claude:  → get_document_info → resize_for_variation
 | | Este projeto | MCP oficial da Adobe (beta) |
 |---|---|---|
 | Instalação | npm (`npx illustrator-mcp-server`) ou instalação em um clique via `.mcpb` | Integrado ao Illustrator Beta — obtenha a chave de autenticação + URL nas configurações do app e conecte via `mcp-remote` |
-| Versões suportadas | Illustrator CC 2024+ estável (macOS / Windows) | Apenas Illustrator Beta 30.4+ |
+| Versões suportadas | Illustrator 2024+ verificado / 2020+ não verificado (macOS / Windows) | Apenas Illustrator Beta 30.4+ |
 | Número de ferramentas | 67 | ~40 |
 | Análise e processamento em lote de documentos existentes | ✅ Análise de estrutura / cores / fontes, recolorização em massa, variações e conjuntos de dados, exportação em lote de pranchetas (`artboard:all`), preflight de fontes e links quebrados | ✅ Seu foco principal |
 | Criação de objetos do zero | ✅ Conjunto completo — documentos, formas, caminhos, quadros de texto, texto em caminho, gradientes | ❌ Sem novos objetos, quadros de texto ou documentos \* |

@@ -82,6 +82,16 @@ function readParamsFile(filePath) {
 }
 
 function writeResultFile(filePath, result) {
+  // 未検証バージョンの警告を結果に添える（checkIllustratorVersion() が設定）。
+  // 配列を返すツールには付与できないため、オブジェクトの場合のみ。
+  if (_versionWarning && result && typeof result === "object" && !(result instanceof Array)) {
+    if (result.warnings instanceof Array) {
+      result.warnings.push(_versionWarning);
+    } else {
+      result.warnings = [_versionWarning];
+    }
+  }
+
   var f = new File(filePath);
   f.encoding = "UTF-8";
   if (!f.open("w")) {
@@ -314,10 +324,32 @@ function getArtboardIndexForItem(item) {
 
 // --- バージョンチェック ---
 
+// 動作下限（Illustrator 2020 = v24）。
+// 本サーバーが使う ExtendScript API はすべて v24 以前から存在するもののみ
+// （Adobe 公式の scripting changelog でも API 追加は 24.0 が最後）。
+var MIN_ILLUSTRATOR_VERSION = 24;
+
+// 実機で検証済みの下限（Illustrator 2024 = v28）。
+// これ未満は「動くはずだが未検証」の扱いで、警告を添えて実行する。
+var VERIFIED_ILLUSTRATOR_VERSION = 28;
+
+// 未検証バージョンで実行中に立つ警告。writeResultFile() が全ツールの結果に付与する。
+var _versionWarning = null;
+
 function checkIllustratorVersion() {
   var ver = parseInt(app.version.split(".")[0], 10);
-  if (ver < 28) {
-    return { error: true, message: "Illustrator CC 2024 or later is required (current: " + app.version + ")" };
+  if (isNaN(ver) || ver < MIN_ILLUSTRATOR_VERSION) {
+    return {
+      error: true,
+      message: "Illustrator 2020 (v24) or later is required (current: " + app.version + ")"
+    };
+  }
+  if (ver < VERIFIED_ILLUSTRATOR_VERSION) {
+    _versionWarning =
+      "Illustrator " + app.version + " is below the verified baseline. " +
+      "This server is tested only on Illustrator 2024 (v28) and later. " +
+      "Older versions are expected to work but are unverified \u2014 " +
+      "please report anything broken at https://github.com/ie3jp/illustrator-mcp-server/issues";
   }
   return null;
 }

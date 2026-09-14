@@ -115,6 +115,8 @@ Aus der Claude-Desktop-Menüleiste:
 
 Wenn Du mehrere Versionen von Illustrator installiert hast, kannst Du Claude im Gespräch mitteilen, welche Version verwendet werden soll. Sag einfach so etwas wie „Nutze Illustrator 2024" und das Werkzeug `set_illustrator_version` steuert diese Version an.
 
+
+**Unterstützte Versionen:** Illustrator 2024 (v28) und neuer sind verifiziert. Illustrator 2020–2023 (v24–v27) sollten funktionieren – sämtliche von diesem Server genutzten ExtendScript-APIs existieren seit v24 –, sind aber **nicht verifiziert**. Die Werkzeuge geben auf diesen Versionen daher eine Warnung zurück. Versionen älter als 2020 (v24) werden abgelehnt. Wenn auf einer nicht verifizierten Version etwas nicht funktioniert, [erstelle bitte ein Issue](https://github.com/ie3jp/illustrator-mcp-server/issues).
 > [!NOTE]
 > Wenn Illustrator bereits läuft, verbindet sich der Server unabhängig von der Versionseinstellung mit der laufenden Instanz. Die Version wird nur verwendet, um die korrekte Version zu starten, solange Illustrator noch nicht läuft.
 
@@ -161,7 +163,7 @@ Claude:  → get_document_info → resize_for_variation
 | | Dieses Projekt | Adobes offizieller MCP (Beta) |
 |---|---|---|
 | Installation | npm (`npx illustrator-mcp-server`) oder `.mcpb` per Ein-Klick-Installation | In Illustrator Beta integriert — Auth-Schlüssel + URL in den App-Einstellungen abrufen, Verbindung über `mcp-remote` |
-| Unterstützte Versionen | Stabiles Illustrator CC 2024+ (macOS / Windows) | Nur Illustrator Beta 30.4+ |
+| Unterstützte Versionen | Illustrator 2024+ verifiziert / 2020+ unverifiziert (macOS / Windows) | Nur Illustrator Beta 30.4+ |
 | Anzahl der Werkzeuge | 67 | ca. 40 |
 | Analyse & Stapelverarbeitung bestehender Dokumente | ✅ Struktur- / Farb- / Schriftanalyse, Massen-Umfärbung, Varianten & Datensätze, Stapel-Export aller Zeichenflächen (`artboard:all`), Preflight für Schriften & defekte Verknüpfungen | ✅ Sein Hauptfokus |
 | Objekte von Grund auf erstellen | ✅ Kompletter Satz — Dokumente, Formen, Pfade, Textrahmen, Pfadtext, Verläufe | ❌ Keine neuen Objekte, Textrahmen oder Dokumente \* |

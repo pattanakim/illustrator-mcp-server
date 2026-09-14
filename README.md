@@ -1,5 +1,7 @@
 **🇺🇸 English** | [🇯🇵 日本語](README.ja.md) | [🇨🇳 简体中文](README.zh-CN.md) | [🇰🇷 한국어](README.ko.md) | [🇪🇸 Español](README.es.md) | [🇩🇪 Deutsch](README.de.md) | [🇫🇷 Français](README.fr.md) | [🇵🇹 Português (BR)](README.pt-BR.md)
 
+> 🇯🇵 日本語の README は [README.ja.md](README.ja.md) にあります。
+
 # Illustrator MCP Server
 
 [![npm](https://img.shields.io/npm/v/illustrator-mcp-server.svg?style=flat-square&colorA=18181B&colorB=18181B)](https://www.npmjs.com/package/illustrator-mcp-server)
@@ -115,6 +117,8 @@ From the Claude Desktop menu bar:
 
 If you have multiple versions of Illustrator installed, you can tell Claude which version to use during conversation. Just say something like "Use Illustrator 2024" and the `set_illustrator_version` tool will target that version.
 
+
+**Supported versions:** Illustrator 2024 (v28) and later are verified. Illustrator 2020–2023 (v24–v27) are expected to work — every ExtendScript API this server uses has existed since v24 — but they are **not verified**, so tools return a warning when running on them. Versions older than 2020 (v24) are rejected. If something breaks on an unverified version, please [open an issue](https://github.com/ie3jp/illustrator-mcp-server/issues).
 > [!NOTE]
 > If Illustrator is already running, the server connects to the running instance regardless of the version setting. The version is only used to launch the correct version when Illustrator is not yet running.
 
@@ -161,7 +165,7 @@ Claude:  → get_document_info → resize_for_variation
 | | This project | Adobe official MCP (beta) |
 |---|---|---|
 | Installation | npm (`npx illustrator-mcp-server`) or one-click `.mcpb` install | Built into Illustrator Beta — get an auth key + URL from the app settings, connect via `mcp-remote` |
-| Supported versions | Stable Illustrator CC 2024+ (macOS / Windows) | Illustrator Beta 30.4+ only |
+| Supported versions | Illustrator 2024+ verified / 2020+ unverified (macOS / Windows) | Illustrator Beta 30.4+ only |
 | Number of tools | 67 | ~40 |
 | Analyzing & batch-processing existing documents | ✅ Structure / color / font analysis, bulk recolor, variations & datasets, batch artboard export (`artboard:all`), font & broken-link preflight | ✅ Its main focus |
 | Creating objects from scratch | ✅ Full set — documents, shapes, paths, text frames, path text, gradients | ❌ No new objects, text frames, or documents \* |
